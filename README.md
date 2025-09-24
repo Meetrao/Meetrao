@@ -1,5 +1,6 @@
 # 💫 About Me:
 👋 Hi, I’m Meet Rao! <br>🌱 Pursuing BTech in CSE (Data Science) while diving deep into Backend Development, AI, and Machine Learning on my path toward Full-Stack mastery. <br>🤖 Passionate about building AI/ML-powered applications, experimenting with models like BERT, LSTM, and NLP frameworks, and exploring how they can solve real-world problems. <br>📱 I also work as a Social Media Specialist — creating strategies, campaigns, and content to build strong online brand presence. <br>⚡ Fun fact: I enjoy breaking and tweaking things to see how they work — often ending up with smarter solutions. <br>💡 Always curious, always building, and yes… often debugging at 3 AM. <br>
+
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/https://www.instagram.com/meeeeettt._/?hl=en) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/www.linkedin.com/in/meet-rao-a99a00276) [![Pinterest](https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white)](https://pinterest.com/https://in.pinterest.com/meeett29/) 
 
