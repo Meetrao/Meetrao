@@ -1,0 +1,31 @@
+name: Weekly Log Reminder
+
+on:
+  schedule:
+    # Runs at 10:00 AM every Friday (UTC time)
+    - cron: '0 10 * * 5'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Reminder Issue
+        uses: imjohnbo/issue-bot@v3
+        with:
+          assignees: "Meetrao"
+          labels: "reminder, learning-log"
+          title: "🗓️ Weekly Check-in: Update your Learning Log & Projects!"
+          body: |
+            ### Hey Meet! 👋
+            
+            It's time for your weekly check-in. Don't forget to document what you've learned or worked on this week.
+            
+            **Checklist:**
+            - [ ] Did you push code to any side projects? Update their READMEs!
+            - [ ] Did you learn a new ML concept (like BERT/LSTM)? Add a small note to your learning log repo.
+            - [ ] Did you resolve a tricky bug? Write a quick paragraph about how you solved it.
+            
+            *Consistency is key. Real, honest work stands out the most!*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
