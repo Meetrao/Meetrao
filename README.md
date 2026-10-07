@@ -80,9 +80,9 @@
 
 | Project | Description | Tech Stack | Links |
 | :--- | :--- | :--- | :--- |
-| **[Project 1 Name]** | [Short, one-line description of what it does and the problem it solves] | `Tech 1` `Tech 2` `Tech 3` | [Repo]([YOUR_REPO_LINK]) \| [Live Demo]([YOUR_DEMO_LINK]) |
-| **[Project 2 Name]** | [Short, one-line description of what it does and the problem it solves] | `Tech 1` `Tech 2` `Tech 3` | [Repo]([YOUR_REPO_LINK]) \| [Live Demo]([YOUR_DEMO_LINK]) |
-| **[Project 3 Name]** | [Short, one-line description of what it does and the problem it solves] | `Tech 1` `Tech 2` `Tech 3` | [Repo]([YOUR_REPO_LINK]) \| [Live Demo]([YOUR_DEMO_LINK]) |
+| **CargoIntel** | AI-powered X-ray cargo inspection using YOLOv8 for prohibited item detection | `JavaScript` `YOLOv8` `AI/ML` | [Repo](https://github.com/Meetrao/CargoIntel) |
+| **VoteChain** | Decentralized e-voting with blockchain & AI face verification | `JavaScript` `Blockchain` `AI` | [Repo](https://github.com/Meetrao/VoteChain) |
+| **Warehouse Management System** | Complete backend system for inventory and warehouse management | `Python` `Backend` | [Repo](https://github.com/Meetrao/WarehouseManagementSystem) |
 
 ---
 
@@ -98,5 +98,5 @@
 <br/>
 
 <div align="center">
-  <img src="https://visitcount.itsvg.in/api?id=Meetrao&icon=0&color=0" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=Meetrao&color=blueviolet&style=for-the-badge" alt="Profile Views" />
 </div>
