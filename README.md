@@ -1,15 +1,83 @@
 <div align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=28&pause=1000&color=38B2AC&center=true&vCenter=true&width=600&lines=Hi+there,+I'm+Meet+Rao!+%F0%9F%91%8B;Backend+%7C+AI%2FML+%7C+Data+Science;Building+smarter+solutions..." alt="Typing SVG" />
-  </a>
-</div>
 
-<p align="center">
-  <strong>CSE (Data Science) student blending Backend Development with AI/ML</strong><br>
-  <em>Aiming for Full-Stack mastery while crafting strategies as a Social Media Specialist.</em>
+<!-- Animated Contribution Graph: Real GitHub data, boxes cascade diagonally.
+     Regenerated daily at 06:17 UTC by .github/workflows/update-profile-art.yml -->
+
+<h3><code>meet@github ~ $ ./contributions.sh</code></h3>
+
+<img src="./contrib-heatmap.svg" width="860" alt="Meet Rao's GitHub contribution graph — auto-refreshed daily" />
+
+<br>
+<br>
+
+<!-- ASCII Portrait (left) + Streak & Stats Card (right).
+     Both SVGs are 840x880 so equal widths give identical heights.
+     Portrait: python scripts/prep_photo.py <photo> && python scripts/make_ascii_svg.py
+     Stats:    python scripts/render_stats_svg.py (auto-refreshed daily) -->
+
+<h3><code>meet@github ~ $ whoami</code></h3>
+
+<table>
+  <tr>
+    <td valign="top">
+      <img src="./meet-ascii.svg" width="420" alt="Meet Rao — Monochrome ASCII portrait" />
+    </td>
+    <td valign="top">
+      <img src="./stats.svg" width="420" alt="Meet Rao — Streak & Contribution Stats" />
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+<h3><code>meet@github ~ $ neofetch</code></h3>
+
+<img src="./info-card.svg" width="860" alt="Meet Rao — System & Developer Specification" />
+
+<br>
+<br>
+
+<h3><code>meet@github ~ $ ./skills.sh</code></h3>
+
+<p><em>Focusing on robust backend architectures, distributed systems & applied AI/ML.</em></p>
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
 </p>
 
-<p align="center">
+<p>
+  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn" />
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" />
+  <img src="https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+</p>
+
+<br>
+
+<h3><code>meet@github ~ $ ./projects.sh --featured</code></h3>
+
+| Project | Description | Tech Stack | Repository |
+| :--- | :--- | :--- | :--- |
+| **CargoIntel** | AI-powered X-ray cargo inspection using YOLOv8 for prohibited item detection | `JavaScript` `YOLOv8` `AI/ML` | [Meetrao/CargoIntel](https://github.com/Meetrao/CargoIntel) |
+| **VoteChain** | Decentralized e-voting platform featuring blockchain & biometric AI verification | `JavaScript` `Blockchain` `AI` | [Meetrao/VoteChain](https://github.com/Meetrao/VoteChain) |
+| **Warehouse Management System** | Complete backend system for inventory, order processing, and warehousing | `Python` `Backend` `Database` | [Meetrao/WarehouseManagementSystem](https://github.com/Meetrao/WarehouseManagementSystem) |
+
+<br>
+<br>
+
+<h3><code>meet@github ~ $ ./contact.sh</code></h3>
+
+<p>
   <a href="https://www.linkedin.com/in/meet-rao-a99a00276/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
@@ -19,84 +87,13 @@
   <a href="https://in.pinterest.com/meeett29/" target="_blank">
     <img src="https://img.shields.io/badge/Pinterest-E60023?style=for-the-badge&logo=pinterest&logoColor=white" alt="Pinterest" />
   </a>
-  <a href="mailto:[YOUR_EMAIL_ADDRESS]" target="_blank">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  <a href="https://github.com/Meetrao" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-Meetrao-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
 </p>
 
----
+<br>
 
-### 🚀 About Me
+<img src="https://komarev.com/ghpvc/?username=Meetrao&color=22d3ee&style=flat-square" alt="Profile Views" />
 
-- 🎓 Pursuing a B.Tech in **Computer Science & Engineering (Data Science)**.
-- 💻 Focusing on **Backend Development**, **AI/ML**, and diving into **NLP frameworks** (BERT, LSTM).
-- 📈 Balancing code with creativity as a **Social Media Specialist**, building brand strategies and campaigns.
-- 🌱 **Currently Learning:** [List your current learning goals, e.g., System Design, Advanced React, etc.]
-- 🎯 **Open To:** [Internships / Freelance / Open Source Collaborations / Developer Roles] — Feel free to reach out!
-- ⚡ **Fun Fact:** I love breaking and tweaking things to see how they work... usually resulting in 3 AM debugging sessions but always a smarter solution.
-
----
-
-### 🛠️ Tech Stack
-
-*Focusing on the tools I use to build real-world applications.*
-
-<details open>
-  <summary><b>Languages & Databases</b></summary><br/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++" />
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
-</details>
-
-<details open>
-  <summary><b>Backend & Frameworks</b></summary><br/>
-  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-</details>
-
-<details open>
-  <summary><b>AI / ML & Data Science</b></summary><br/>
-  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" />
-  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn" />
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
-  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
-</details>
-
-<details open>
-  <summary><b>Cloud & Tools</b></summary><br/>
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
-  <img src="https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-</details>
-
----
-
-### 📂 Featured Projects
-
-| Project | Description | Tech Stack | Links |
-| :--- | :--- | :--- | :--- |
-| **CargoIntel** | AI-powered X-ray cargo inspection using YOLOv8 for prohibited item detection | `JavaScript` `YOLOv8` `AI/ML` | [Repo](https://github.com/Meetrao/CargoIntel) |
-| **VoteChain** | Decentralized e-voting with blockchain & AI face verification | `JavaScript` `Blockchain` `AI` | [Repo](https://github.com/Meetrao/VoteChain) |
-| **Warehouse Management System** | Complete backend system for inventory and warehouse management | `Python` `Backend` | [Repo](https://github.com/Meetrao/WarehouseManagementSystem) |
-
----
-
-### 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Meetrao&show_icons=true&theme=radical&hide_border=true" alt="Meet's GitHub stats" height="165" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Meetrao&layout=compact&theme=radical&hide_border=true&hide=jupyter%20notebook,html,css" alt="Top Languages" height="165" />
-</p>
-
-> *Note: These stats represent my public GitHub activity. Much of my experimental ML work and academic projects happen locally or in private repositories.*
-
-<br/>
-
-<div align="center">
-  <img src="https://komarev.com/ghpvc/?username=Meetrao&color=blueviolet&style=for-the-badge" alt="Profile Views" />
 </div>
