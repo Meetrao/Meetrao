@@ -28,7 +28,7 @@
 
 <table>
   <tr>
-    <td width="50%" valign="top"><img src="./meet-ascii.svg?v=3" width="100%" alt="ASCII portrait of Meet Rao" /></td>
+    <td width="50%" valign="top"><img src="./meet-ascii.svg?v=4" width="100%" alt="ASCII portrait of Meet Rao" /></td>
     <td width="50%" valign="top"><img src="./info-card.svg?v=2" width="100%" alt="neofetch-style card: Full-Stack & AI/ML Engineer, stack and current projects" /></td>
   </tr>
 </table>

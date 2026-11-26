@@ -39,8 +39,8 @@ HEAD_MARGIN = 0.05     # space above the hair, as a fraction of crop size
 MAX_SIDE = 1400        # downscale big camera files first (filters are tuned for this)
 REMBG_MODEL = os.environ.get("REMBG_MODEL", "u2net_human_seg")
 KEEP_DESK = os.environ.get("KEEP_DESK", "1") != "0"
-DESK_TONE = 0.5        # desk is drawn dimmer than the person so it reads as a surface
-DESK_FADE = 0.12       # ...and fades toward this by the bottom, so only the top stands out
+DESK_TONE = 0.95       # desk brightness at its top surface (visible at ~420px display)
+DESK_FADE = 0.6        # fades toward this at the bottom so the top edge stands out
 
 
 def plain_background_mask(rgb):
