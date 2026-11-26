@@ -12,6 +12,8 @@ Steps:
        - PNG alpha channel if present
        - else a plain light background flood-filled in from the top/sides
        - else rembg person segmentation (pip install "rembg[cpu]")
+     plus a desk/table in the foreground, if one spans the bottom of the
+     frame, so arms resting on it don't float in mid-air
   2. bilateral-smooth skin texture while keeping edges (glasses, beard, hair)
   3. CLAHE local contrast + tone stretch over the subject only
   4. lift the darkest subject tones to a floor so dark clothes don't vanish
@@ -36,6 +38,9 @@ TONE_GAMMA = 1.1       # >1 keeps hair/suit dark so the face and shirt stand out
 HEAD_MARGIN = 0.05     # space above the hair, as a fraction of crop size
 MAX_SIDE = 1400        # downscale big camera files first (filters are tuned for this)
 REMBG_MODEL = os.environ.get("REMBG_MODEL", "u2net_human_seg")
+KEEP_DESK = os.environ.get("KEEP_DESK", "1") != "0"
+DESK_TONE = 0.5        # desk is drawn dimmer than the person so it reads as a surface
+DESK_FADE = 0.12       # ...and fades toward this by the bottom, so only the top stands out
 
 
 def plain_background_mask(rgb):
@@ -87,10 +92,64 @@ def subject_mask(img):
         from rembg import new_session, remove
         print(f"Removing background with rembg ({REMBG_MODEL})...")
         cut = remove(img.convert("RGBA"), session=new_session(REMBG_MODEL))
-        return np.array(cut.convert("RGB")), np.array(cut.getchannel("A"))
+        # keep the original pixels: rembg blanks the background, which would
+        # also hide anything we add back (e.g. the desk)
+        return rgb, np.array(cut.getchannel("A"))
     except Exception as e:  # rembg missing or failed
         print(f"Notice: no background removal ({e}); using the full frame.")
         return rgb, np.full(rgb.shape[:2], 255, np.uint8)
+
+
+def desk_mask(rgb):
+    """Foreground desk/table: a light, low-saturation surface touching the
+    bottom of the frame and spanning most of its width.
+
+    Returns everything below the desk's top edge (per column), which also
+    picks up the darker front face, or None if there's no such surface.
+    """
+    h, w = rgb.shape[:2]
+    hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+    light = ((hsv[..., 2] > 140) & (hsv[..., 1] < 45)).astype(np.uint8)
+    light = cv2.morphologyEx(light, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+
+    _, labels = cv2.connectedComponents(light)
+    ids = set(labels[h - 1, :]) - {0}
+    if not ids:
+        return None
+    surface = np.isin(labels, list(ids))
+
+    # the desk top starts at the first row (from the top) the surface spans
+    # most of the width; a window or wall touching it stays above that line
+    wide = np.where(surface.mean(axis=1) > 0.6)[0]
+    if len(wide) == 0 or wide[0] < h // 2:
+        return None
+    y0 = max(0, wide[0] - h // 25)   # allow for a slanted edge
+
+    top = np.full(w, h, np.int32)
+    for x in range(w):
+        hits = np.where(surface[y0:, x])[0]
+        if len(hits):
+            top[x] = y0 + hits[0]
+    top = cv2.medianBlur(top.astype(np.float32).reshape(1, -1), 5).astype(np.int32).ravel() \
+        if w >= 5 else top
+    rows = np.arange(h)[:, None]
+    return ((rows >= top[None, :]) * 255).astype(np.uint8)
+
+
+def close_gap(desk, person, max_gap):
+    """Extend the desk up to the arms where a thin shadow separates them,
+    so a resting arm doesn't look like it floats above the surface."""
+    out = desk.copy()
+    h, w = desk.shape
+    for x in range(w):
+        d = np.where(desk[:, x] > 128)[0]
+        if not len(d):
+            continue
+        top = d[0]
+        p = np.where(person[:top, x] > 128)[0]
+        if len(p) and top - p[-1] <= max_gap:
+            out[p[-1]:top, x] = 255
+    return out
 
 
 def crop_head_and_shoulders(img, alpha):
@@ -115,6 +174,12 @@ def prep_image(input_path, output_path):
     img = ImageOps.exif_transpose(Image.open(input_path))
     img.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
     rgb, alpha = subject_mask(img)
+    desk = desk_mask(rgb) if KEEP_DESK else None
+    if desk is not None:
+        print("Keeping the desk in the foreground")
+        desk = close_gap(desk, alpha, rgb.shape[0] // 12)
+        desk = cv2.subtract(desk, alpha)          # desk-only pixels
+        alpha = cv2.max(alpha, desk)
     # pull the edge in a few px so light background fringe doesn't leave a halo
     alpha = cv2.erode(alpha, np.ones((5, 5), np.uint8), iterations=1)
     inside = alpha > 128
@@ -138,6 +203,13 @@ def prep_image(input_path, output_path):
     tone = np.clip(tone + EDGE_BOOST * edges, 0, 1) ** TONE_GAMMA
 
     tone = SUBJECT_FLOOR + (1 - SUBJECT_FLOOR) * tone
+    if desk is not None:
+        rows = np.where(desk.any(axis=1))[0]
+        fade = np.ones(tone.shape[0], np.float32)
+        span = max(1, rows[-1] - rows[0])
+        fade[rows[0]:] = np.linspace(DESK_TONE, DESK_FADE, tone.shape[0] - rows[0])
+        fade[rows[0]:rows[0] + span // 6] = DESK_TONE        # keep the surface itself even
+        tone = np.where(desk > 128, tone * fade[:, None], tone)
 
     mask = cv2.GaussianBlur(alpha.astype(np.float32) / 255.0, (0, 0), 1.2)
     out = (tone * mask * 255).astype(np.uint8)   # background -> black
