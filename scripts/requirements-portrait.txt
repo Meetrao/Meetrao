@@ -1,0 +1,8 @@
+# Only needed to regenerate the ASCII portrait locally (not used by CI).
+# rembg needs Python 3.9-3.13.
+#   pip install -r scripts/requirements-portrait.txt
+#   python scripts/prep_photo.py && python scripts/make_ascii_svg.py
+Pillow>=10.0.0
+numpy>=1.24.0
+opencv-python-headless>=4.8
+rembg[cpu]>=2.0

@@ -3,9 +3,8 @@
 Render the streak / numbers card from data/contributions.json (written daily by
 fetch_contributions.py) as a terminal-window SVG that sits beside meet-ascii.svg.
 
-The canvas is the same size as the portrait (840 x 880) so the two panels line
-up when the README shows them side by side at equal widths. Fonts are sized for
-that half-width display (~0.5x).
+The canvas is a wide strip (1720 wide) shown full width under the contribution
+graph at ~860px, so fonts are sized for that ~0.5x display.
 
 Six stat tiles slide in and their numbers count up to the real value, then a
 monthly-contributions bar chart grows in underneath. The count-up is a stack of
@@ -32,10 +31,10 @@ INK = "#e6edf3"
 GREEN = "#39d353"
 BAR = "#26a641"
 
-W, H = 840, 880                      # == meet-ascii.svg canvas
+W, H = 1720, 720
 PAD = 20
 TITLEBAR_H = 30
-COLS, ROWS = 2, 3
+COLS, ROWS = 3, 2
 GAP = 16
 TILE_W = (W - PAD * 2 - GAP * (COLS - 1)) / COLS
 TILE_H = 150

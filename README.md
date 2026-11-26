@@ -1,99 +1,118 @@
 <div align="center">
 
-<!-- Animated Contribution Graph: Real GitHub data, boxes cascade diagonally.
-     Regenerated daily at 06:17 UTC by .github/workflows/update-profile-art.yml -->
+<!-- Typing banner (readme-typing-svg) -->
+<a href="https://github.com/Meetrao">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=30&duration=2800&pause=900&color=22D3EE&center=true&vCenter=true&width=700&height=55&lines=Hey%2C+I'm+Meet+Rao+%F0%9F%91%8B;Full-Stack+%26+AI%2FML+Engineer;I+build+tools+people+actually+use" alt="Hey, I'm Meet Rao — Full-Stack & AI/ML Engineer" />
+</a>
 
-<h3><code>meet@github ~ $ ./contributions.sh</code></h3>
+<p>
+  <code>B.Tech CSE (Data Science)</code> · <code>Python & TypeScript</code> · <code>shipping side projects that run themselves</code>
+</p>
 
-<img src="./contrib-heatmap.svg" width="860" alt="Meet Rao's GitHub contribution graph — auto-refreshed daily" />
+<p>
+  <a href="https://www.linkedin.com/in/meet-rao-a99a00276/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://www.gethooky.in"><img src="https://img.shields.io/badge/Hooky-live-22d3ee?style=flat-square&logo=vercel&logoColor=white" alt="Hooky (live)" /></a>
+  <a href="https://www.instagram.com/meeeeettt._/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white" alt="Instagram" /></a>
+  <a href="https://in.pinterest.com/meeett29/"><img src="https://img.shields.io/badge/Pinterest-E60023?style=flat-square&logo=pinterest&logoColor=white" alt="Pinterest" /></a>
+  <img src="https://komarev.com/ghpvc/?username=Meetrao&color=22d3ee&style=flat-square&label=profile+views" alt="Profile views" />
+</p>
 
 <br>
-<br>
 
-<!-- ASCII Portrait (left) + Streak & Stats Card (right).
-     Both SVGs are 840x880 so equal widths give identical heights.
-     Portrait: python scripts/prep_photo.py <photo> && python scripts/make_ascii_svg.py
-     Stats:    python scripts/render_stats_svg.py (auto-refreshed daily) -->
+<!-- ASCII portrait (left) + neofetch card (right). Both SVGs are 840x880, so
+     equal widths give identical heights.
+     Portrait: python scripts/prep_photo.py && python scripts/make_ascii_svg.py
+     Card:     python scripts/make_info_card.py (re-rendered daily) -->
 
-<h3><code>meet@github ~ $ whoami</code></h3>
+<h3><code>meet@github ~ $ neofetch</code></h3>
 
 <table>
   <tr>
-    <td valign="top">
-      <img src="./meet-ascii.svg" width="420" alt="Meet Rao — Monochrome ASCII portrait" />
-    </td>
-    <td valign="top">
-      <img src="./stats.svg" width="420" alt="Meet Rao — Streak & Contribution Stats" />
-    </td>
+    <td width="50%" valign="top"><img src="./meet-ascii.svg" width="100%" alt="ASCII portrait of Meet Rao" /></td>
+    <td width="50%" valign="top"><img src="./info-card.svg" width="100%" alt="neofetch-style card: Full-Stack & AI/ML Engineer, stack and current projects" /></td>
   </tr>
 </table>
 
 <br>
-<br>
 
-<h3><code>meet@github ~ $ neofetch</code></h3>
+<h3><code>meet@github ~ $ cat now.md</code></h3>
 
-<img src="./info-card.svg" width="860" alt="Meet Rao — System & Developer Specification" />
+</div>
 
-<br>
-<br>
+```diff
++ building   Hooky — keyword comment → instant Instagram DM, a cheaper ManyChat for creators
++ automating Clippin + Toon Channel — video pipelines that cut, caption & post on their own
++ securing   VibeCheck — plain-English security reports for AI-built (vibe-coded) apps
+! open to    internships & collaborations
+```
 
-<h3><code>meet@github ~ $ ./skills.sh</code></h3>
-
-<p><em>Focusing on robust backend architectures, distributed systems & applied AI/ML.</em></p>
-
-<p>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
-  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django" />
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" />
-  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn" />
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
-  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" />
-  <img src="https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-</p>
+<div align="center">
 
 <br>
 
 <h3><code>meet@github ~ $ ./projects.sh --featured</code></h3>
 
-| Project | Description | Tech Stack | Repository |
-| :--- | :--- | :--- | :--- |
-| **CargoIntel** | AI-powered X-ray cargo inspection using YOLOv8 for prohibited item detection | `JavaScript` `YOLOv8` `AI/ML` | [Meetrao/CargoIntel](https://github.com/Meetrao/CargoIntel) |
-| **VoteChain** | Decentralized e-voting platform featuring blockchain & biometric AI verification | `JavaScript` `Blockchain` `AI` | [Meetrao/VoteChain](https://github.com/Meetrao/VoteChain) |
-| **Warehouse Management System** | Complete backend system for inventory, order processing, and warehousing | `Python` `Backend` `Database` | [Meetrao/WarehouseManagementSystem](https://github.com/Meetrao/WarehouseManagementSystem) |
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>🪝 <a href="https://github.com/Meetrao/igautodm">Hooky</a></h4>
+      Auto-DM anyone who comments a keyword on an Instagram post or reel. Live at <a href="https://www.gethooky.in">gethooky.in</a>.
+      <br><br><code>Next.js</code> <code>TypeScript</code> <code>Postgres (Neon)</code> <code>Instagram API</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🎬 <a href="https://github.com/Meetrao/clippintool">Clippin</a></h4>
+      Long videos → 9:16 Shorts. Picks the best moments, reframes each scene and burns in word-by-word captions.
+      <br><br><code>Python</code> <code>faster-whisper</code> <code>Ollama</code> <code>ffmpeg</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>🛡️ <a href="https://github.com/Meetrao/vibe-coded-app-fixer">VibeCheck</a></h4>
+      Paste a repo, get a security report for apps built with Lovable, Bolt, Cursor, v0 &amp; Replit, plus auto-fix PRs.
+      <br><br><code>TypeScript</code> <code>Next.js</code> <code>Claude API</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>💬 <a href="https://github.com/Meetrao/AI-Autocaption">AI Auto-Caption Studio</a></h4>
+      Editable word-by-word captions with face-aware placement; one React renderer for preview and export.
+      <br><br><code>TypeScript</code> <code>React</code> <code>Remotion</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>📉 <a href="https://github.com/Meetrao/retentionai">RetentionAI</a></h4>
+      Predicts employee attrition with an ML ensemble and explains the top risk drivers per person.
+      <br><br><code>FastAPI</code> <code>React</code> <code>scikit-learn</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🗳️ <a href="https://github.com/Meetrao/VoteChain">VoteChain</a></h4>
+      Decentralized e-voting with blockchain, AI face verification and multilingual accessibility.
+      <br><br><code>Solidity</code> <code>JavaScript</code> <code>AI</code>
+    </td>
+  </tr>
+</table>
 
+<sub>more in <a href="https://github.com/Meetrao?tab=repositories">repositories →</a></sub>
+
+<br><br>
+
+<h3><code>meet@github ~ $ ./stack.sh</code></h3>
+
+<img src="https://skillicons.dev/icons?i=python,ts,js,cpp,react,nextjs,nodejs,express,fastapi,django&perline=10" alt="Python, TypeScript, JavaScript, C++, React, Next.js, Node.js, Express, FastAPI, Django" />
 <br>
-<br>
+<img src="https://skillicons.dev/icons?i=tensorflow,sklearn,postgres,mongodb,docker,aws,vercel,githubactions,git,linux&perline=10" alt="TensorFlow, scikit-learn, PostgreSQL, MongoDB, Docker, AWS, Vercel, GitHub Actions, Git, Linux" />
 
-<h3><code>meet@github ~ $ ./contact.sh</code></h3>
+<br><br>
 
-<p>
-  <a href="https://www.linkedin.com/in/meet-rao-a99a00276/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://www.instagram.com/meeeeettt._/?hl=en" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
-  </a>
-  <a href="https://in.pinterest.com/meeett29/" target="_blank">
-    <img src="https://img.shields.io/badge/Pinterest-E60023?style=for-the-badge&logo=pinterest&logoColor=white" alt="Pinterest" />
-  </a>
-  <a href="https://github.com/Meetrao" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Meetrao-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  </a>
-</p>
+<!-- Contribution graph + stats strip: real data, regenerated daily at 06:17 UTC
+     by .github/workflows/update-profile-art.yml -->
 
-<br>
+<h3><code>meet@github ~ $ git log --graph --since="1 year"</code></h3>
 
-<img src="https://komarev.com/ghpvc/?username=Meetrao&color=22d3ee&style=flat-square" alt="Profile Views" />
+<img src="./contrib-heatmap.svg" width="100%" alt="Meet Rao's GitHub contribution graph, refreshed daily" />
+<img src="./stats.svg" width="100%" alt="Streaks, contribution totals and contributions per month, refreshed daily" />
+
+<br><br>
+
+<sub><code>meet@github ~ $ exit</code> · thanks for stopping by ✌️</sub>
 
 </div>

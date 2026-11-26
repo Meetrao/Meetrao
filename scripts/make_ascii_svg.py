@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Convert a portrait photo into a CLEAN, monochrome ASCII-art SVG (Andrew6rant
-style: one light-gray color, subject isolated on a dark background) that "types"
-itself in like a terminal, then holds.
+Convert a prepped portrait (see prep_photo.py) into a clean, monochrome ASCII
+SVG that "types" itself in like a terminal, then holds.
+
+The prepped image is light-on-dark: black background, bright subject. Bright
+pixels map to dense glyphs, near-black maps to blank, so the portrait reads as
+a lit figure in light ink on the dark card.
 
 Monochrome is deliberate -- per-character rainbow color is what makes ASCII
-portraits look noisy. One fill color + a good density ramp + high contrast (so a
-busy background washes out to blank) reads as neat and legible.
+portraits look noisy. One fill color + a good density ramp reads as neat.
 
 GitHub renders SVGs embedded via <img> and runs their SMIL animations there (JS
 does not run). Each row is revealed with a left-to-right clip wipe plus a small
@@ -31,15 +33,15 @@ ART_W_TARGET = 800
 CELL_W = ART_W_TARGET / COLS
 CELL_H = CELL_W * 15 / 8
 ROWS = round(COLS * 8 / 15)
-RAMP = " .`:-=+*cs#%@"  # bright(sparse) -> dark(dense); leading space clears bg
+RAMP = " .`:-=+*cs#%@"  # dark(blank/sparse) -> bright(dense)
 
-# the prepped image already has bg removed + CLAHE local contrast, so only
-# light global tuning is needed here.
+# the prepped image already has bg removed + local contrast, so only light
+# global tuning is needed here.
 CONTRAST = 1.05
 BRIGHTNESS = 1.0
-GAMMA = 1.18          # >1 brightens mids -> face lands in sparser chars
-SHARPEN = False
-WHITE_FLOOR = 0.80    # luminance above this is forced to blank (space)
+GAMMA = 0.95          # <1 lifts mids -> face lands in denser glyphs
+SHARPEN = True
+BLACK_FLOOR = 0.06    # luminance below this is blank (the background)
 
 PAD = 20
 TITLEBAR_H = 30
@@ -83,10 +85,10 @@ def generate_ascii_svg(src_path, out_path):
         for x in range(COLS):
             lum = px[x, y] / 255.0
             lum = pow(lum, GAMMA)
-            if lum >= WHITE_FLOOR:
+            if lum < BLACK_FLOOR:
                 chars.append(" ")
                 continue
-            idx = int((1.0 - lum) * (len(RAMP) - 1) + 0.5)
+            idx = int(lum * (len(RAMP) - 1) + 0.5)
             idx = max(0, min(len(RAMP) - 1, idx))
             chars.append(RAMP[idx])
         rows_txt.append("".join(chars))

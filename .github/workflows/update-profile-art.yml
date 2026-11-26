@@ -1,6 +1,6 @@
 name: Update profile art
 
-# Refreshes the contribution graph + stats card SVGs daily from real data.
+# Refreshes the contribution graph, stats strip and info card SVGs daily from real data.
 # Runs daily, on push to main, and on-demand via workflow_dispatch.
 
 "on":
@@ -35,8 +35,11 @@ jobs:
       - name: Render streak / stats card SVG
         run: python scripts/render_stats_svg.py
 
+      - name: Render neofetch info card SVG
+        run: python scripts/make_info_card.py
+
       - name: Commit updated art
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: refresh contribution graph [skip ci]"
-          file_pattern: "data/contributions.json contrib-heatmap.svg stats.svg"
+          file_pattern: "data/contributions.json contrib-heatmap.svg stats.svg info-card.svg"

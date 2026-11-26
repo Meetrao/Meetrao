@@ -1,18 +1,33 @@
 #!/usr/bin/env python3
 """
-Generate a Neofetch-style terminal info card SVG for Meet Rao.
-Dimensions: 840 x 880 (matches meet-ascii.svg and stats.svg exactly).
-Features staggered slide-in animations and terminal color palette swatches.
+Generate the neofetch-style info card that sits to the RIGHT of meet-ascii.svg
+(art left, specs right -- the classic neofetch layout).
+
+Canvas is 840 x 880, the same as the portrait, so equal-width table cells give
+identical heights. The README shows it at ~half size, so fonts are ~2x what
+they'd be at full width.
+
+The "Uptime" row reads live numbers from data/contributions.json, so the card
+is re-rendered by the daily workflow alongside the heatmap and stats.
+
+    python scripts/make_info_card.py [data.json] [output.svg]
 """
+import html
+import json
 import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "info-card.svg")
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "data", "contributions.json")
+OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "..", "info-card.svg")
 
 W, H = 840, 880
-PAD = 24
-TITLEBAR_H = 32
+PAD = 32
+TITLEBAR_H = 30
+FONT = 25
+ROW_STEP = 47
+KEY_W = 10            # key column width in characters
+CHAR_W = FONT * 0.6   # monospace advance
 
 BG = "#0d1117"
 BG2 = "#111722"
@@ -22,121 +37,96 @@ INK = "#e6edf3"
 CYAN = "#22d3ee"
 GREEN = "#39d353"
 YELLOW = "#f2cc60"
-RED = "#ff5f56"
 BLUE = "#58a6ff"
 MAGENTA = "#bc8cff"
+RED = "#ff7b72"
+
+try:
+    data = json.load(open(SRC))
+    streak = data.get("current_streak", {}).get("length", 0)
+    total = data.get("total_contributions", 0)
+    uptime = f"{streak}-day streak · {total:,} contribs/yr"
+except Exception:
+    uptime = "always shipping"
 
 INFO_ROWS = [
-    ("OS", "macOS Sonoma / Ubuntu 24.04 LTS", CYAN),
-    ("Host", "Meet Rao (Full-Stack & AI/ML Engineer)", INK),
-    ("Education", "B.Tech in CSE (Data Science)", INK),
-    ("Kernel", "Building & Breaking Scalable Systems", YELLOW),
-    ("Uptime", "21 Public Repos · 320+ Contributions", GREEN),
-    ("Shell", "zsh / bash (Unix Environment)", INK),
-    ("Languages", "Python, JavaScript, C++, SQL", BLUE),
-    ("Backend", "FastAPI, Express.js, Django, Node.js", CYAN),
-    ("AI / ML", "TensorFlow, scikit-learn, BERT, YOLOv8, LSTM", MAGENTA),
-    ("Databases", "PostgreSQL, MongoDB", INK),
-    ("Cloud & Tools", "Docker, AWS, Git, GitHub Actions", YELLOW),
-    ("Featured", "CargoIntel (YOLOv8) · VoteChain (Blockchain+AI)", GREEN),
-    ("Status", "Open to Internships & Collaborations", CYAN),
+    ("Role", "Full-Stack & AI/ML Engineer", INK),
+    ("Study", "B.Tech CSE (Data Science)", INK),
+    ("Uptime", uptime, GREEN),
+    ("Shell", "zsh · macOS / Ubuntu", INK),
+    ("Langs", "Python, TypeScript, JS, C++", BLUE),
+    ("Backend", "FastAPI, Node, Express, Django", CYAN),
+    ("Frontend", "React, Next.js, Tailwind, Vite", CYAN),
+    ("AI / ML", "LLM apps, RAG, YOLOv8, sklearn", MAGENTA),
+    ("Data", "PostgreSQL, MongoDB, Drizzle", INK),
+    ("DevOps", "Docker, AWS, Vercel, Actions", YELLOW),
+    ("Shipping", "Hooky · Clippin · VibeCheck", GREEN),
+    ("Status", "Open to internships & collabs", CYAN),
 ]
 
-COLOR_SWATCHES = [
-    "#21262d", "#ff5f56", "#39d353", "#f2cc60",
-    "#58a6ff", "#bc8cff", "#22d3ee", "#e6edf3"
-]
+SWATCHES = ["#21262d", RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, INK]
+
+
+def row(y, delay, inner):
+    return f'<g class="l" style="animation-delay:{delay:.2f}s"><text x="{PAD}" y="{y}" font-size="{FONT}">{inner}</text></g>'
 
 
 def render():
-    parts = [
+    p = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
-        f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
+        f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">',
         '<style>'
-        '.line { opacity: 0; animation: fadeIn 0.4s ease-out both; }'
-        '@keyframes fadeIn { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }'
-        '@media (prefers-reduced-motion: reduce) { .line { opacity: 1 !important; transform: none !important; animation: none !important; } }'
+        '.l{opacity:0;animation:in .4s ease-out both}'
+        '@keyframes in{0%{opacity:0;transform:translateX(-10px)}100%{opacity:1;transform:translateX(0)}}'
+        '@media (prefers-reduced-motion: reduce){.l{opacity:1!important;transform:none!important;animation:none!important}}'
         '</style>',
-        '<defs>'
-        f'<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">'
-        f'<stop offset="0" stop-color="{BG2}"/><stop offset="1" stop-color="{BG}"/>'
-        '</linearGradient>'
-        '</defs>',
+        f'<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">'
+        f'<stop offset="0" stop-color="{BG2}"/><stop offset="1" stop-color="{BG}"/></linearGradient></defs>',
         f'<rect width="{W}" height="{H}" rx="12" fill="url(#bg)"/>',
         f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="12" fill="none" stroke="{FRAME}"/>',
         f'<line x1="0" y1="{TITLEBAR_H}" x2="{W}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>',
     ]
-
-    # Titlebar dots
     for i, dot in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
-        parts.append(f'<circle cx="{PAD + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dot}"/>')
+        p.append(f'<circle cx="{20 + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dot}"/>')
+    p.append(f'<text x="{W/2}" y="{TITLEBAR_H/2 + 4}" fill="{MUTED}" font-size="12" '
+             f'text-anchor="middle">meet@github: ~$ neofetch</text>')
 
-    parts.append(
-        f'<text x="{W/2}" y="{TITLEBAR_H/2 + 4}" fill="{MUTED}" font-size="12" '
-        f'text-anchor="middle">meet@github: ~$ neofetch</text>'
-    )
-
-    # Main Neofetch Header
-    y_cursor = TITLEBAR_H + 38
-    delay = 0.05
-    parts.append(
-        f'<g class="line" style="animation-delay:{delay:.2f}s">'
-        f'<text x="{PAD}" y="{y_cursor}" font-size="20" font-weight="700">'
-        f'<tspan fill="{CYAN}">meet</tspan><tspan fill="{MUTED}">@</tspan><tspan fill="{GREEN}">github</tspan>'
-        f'</text></g>'
-    )
-
-    y_cursor += 16
-    delay += 0.04
-    parts.append(
-        f'<g class="line" style="animation-delay:{delay:.2f}s">'
-        f'<text x="{PAD}" y="{y_cursor}" fill="{MUTED}" font-size="16">'
-        f'-----------------------------------------'
-        f'</text></g>'
-    )
-
-    # Info Rows
-    for key, val, val_color in INFO_ROWS:
-        y_cursor += 36
-        delay += 0.04
-        parts.append(
-            f'<g class="line" style="animation-delay:{delay:.2f}s">'
-            f'<text x="{PAD}" y="{y_cursor}" font-size="16">'
-            f'<tspan fill="{YELLOW}" font-weight="700">{key:14}</tspan>'
-            f'<tspan fill="{MUTED}">: </tspan>'
-            f'<tspan fill="{val_color}">{val}</tspan>'
-            f'</text></g>'
-        )
-
-    # Terminal Color Blocks (Palette swatches at bottom)
-    y_cursor += 60
+    y = TITLEBAR_H + 64
+    delay = 0.1
+    p.append(row(y, delay, f'<tspan fill="{CYAN}" font-weight="700">meet</tspan><tspan fill="{MUTED}">@</tspan>'
+                           f'<tspan fill="{GREEN}" font-weight="700">github</tspan>'))
+    y += 34
     delay += 0.05
-    swatch_size = 32
-    swatch_gap = 12
-    start_x = PAD
-    parts.append(f'<g class="line" style="animation-delay:{delay:.2f}s">')
-    for i, col in enumerate(COLOR_SWATCHES):
-        sx = start_x + i * (swatch_size + swatch_gap)
-        parts.append(f'<rect x="{sx}" y="{y_cursor}" width="{swatch_size}" height="{swatch_size}" rx="6" fill="{col}"/>')
-    parts.append('</g>')
+    p.append(row(y, delay, f'<tspan fill="{FRAME}">{"─" * 14}</tspan>'))
 
-    # Terminal prompt at bottom with blinking cursor
-    y_cursor += 65
-    delay += 0.05
-    parts.append(
-        f'<g class="line" style="animation-delay:{delay:.2f}s">'
-        f'<text x="{PAD}" y="{y_cursor}" fill="{MUTED}" font-size="16">'
-        f'<tspan fill="{GREEN}">meet@github</tspan><tspan fill="{MUTED}">:</tspan><tspan fill="{BLUE}">~</tspan>'
-        f'<tspan fill="{MUTED}">$ </tspan>'
-        f'</text>'
-        f'<rect x="{PAD + 155}" y="{y_cursor - 15}" width="9" height="18" fill="{CYAN}">'
-        f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" dur="1s" repeatCount="indefinite"/>'
-        f'</rect>'
-        f'</g>'
-    )
+    for key, val, color in INFO_ROWS:
+        y += ROW_STEP
+        delay += 0.06
+        p.append(row(y, delay,
+                     f'<tspan fill="{YELLOW}" font-weight="700">{html.escape(key)}</tspan>'
+                     f'<tspan x="{PAD + KEY_W * CHAR_W:.0f}" fill="{MUTED}">: </tspan>'
+                     f'<tspan fill="{color}">{html.escape(val)}</tspan>'))
 
-    parts.append('</svg>')
-    return "".join(parts)
+    y += 44
+    delay += 0.08
+    size, gap = 40, 10
+    p.append(f'<g class="l" style="animation-delay:{delay:.2f}s">')
+    for i, col in enumerate(SWATCHES):
+        p.append(f'<rect x="{PAD + i * (size + gap)}" y="{y}" width="{size}" height="{size // 2}" rx="4" fill="{col}"/>')
+    p.append('</g>')
+
+    y += 76
+    delay += 0.08
+    prompt = "meet@github:~$ "
+    p.append(f'<g class="l" style="animation-delay:{delay:.2f}s">'
+             f'<text x="{PAD}" y="{y}" font-size="{FONT}"><tspan fill="{GREEN}">meet@github</tspan>'
+             f'<tspan fill="{MUTED}">:</tspan><tspan fill="{BLUE}">~</tspan><tspan fill="{MUTED}">$ </tspan></text>'
+             f'<rect x="{PAD + len(prompt) * CHAR_W:.0f}" y="{y - FONT + 4}" width="{CHAR_W:.0f}" height="{FONT}" fill="{CYAN}">'
+             f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" dur="1s" repeatCount="indefinite"/>'
+             f'</rect></g>')
+
+    p.append('</svg>')
+    return "".join(p)
 
 
 if __name__ == "__main__":
