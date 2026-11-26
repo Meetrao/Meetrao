@@ -3,8 +3,9 @@
 Render the streak / numbers card from data/contributions.json (written daily by
 fetch_contributions.py) as a terminal-window SVG that sits beside meet-ascii.svg.
 
-The canvas is a wide strip (1720 wide) shown full width under the contribution
-graph at ~860px, so fonts are sized for that ~0.5x display.
+The canvas is a compact wide strip (1720 x 500): one row of six tiles over a
+short monthly chart, shown full width under the contribution graph at ~860px,
+so fonts are sized for that ~0.5x display.
 
 Six stat tiles slide in and their numbers count up to the real value, then a
 monthly-contributions bar chart grows in underneath. The count-up is a stack of
@@ -31,10 +32,10 @@ INK = "#e6edf3"
 GREEN = "#39d353"
 BAR = "#26a641"
 
-W, H = 1720, 720
+W, H = 1720, 540
 PAD = 20
-TITLEBAR_H = 30
-COLS, ROWS = 3, 2
+TITLEBAR_H = 56                      # ~2x, since the strip displays at ~0.5x
+COLS, ROWS = 6, 1
 GAP = 16
 TILE_W = (W - PAD * 2 - GAP * (COLS - 1)) / COLS
 TILE_H = 150
@@ -78,7 +79,7 @@ tiles = [
     ("contributions", data.get("total_contributions", 0), "", "in the last year", INK),
     ("active days", data.get("active_days", 0), f" / {n_days}", f'{data.get("active_days", 0) / n_days:.0%} of the year', INK),
     ("best day", best["count"], "", short(best["date"]), INK),
-    ("avg / active day", data.get("avg_per_active_day", 0.0), "", "contributions", INK),
+    ("avg / day", data.get("avg_per_active_day", 0.0), "", "on active days", INK),
 ]
 
 
@@ -98,13 +99,13 @@ parts = [
     '</style>',
     f'<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">'
     f'<stop offset="0" stop-color="{BG2}"/><stop offset="1" stop-color="{BG}"/></linearGradient></defs>',
-    f'<rect width="{W}" height="{H}" rx="12" fill="url(#bg)"/>',
-    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="12" fill="none" stroke="{FRAME}"/>',
+    f'<rect width="{W}" height="{H}" rx="22" fill="url(#bg)"/>',
+    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="22" fill="none" stroke="{FRAME}"/>',
     f'<line x1="0" y1="{TITLEBAR_H}" x2="{W}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>',
 ]
 for i, dot in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
-    parts.append(f'<circle cx="{PAD + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dot}"/>')
-parts.append(f'<text x="{W/2}" y="{TITLEBAR_H/2 + 4}" fill="{MUTED}" font-size="12" '
+    parts.append(f'<circle cx="{PAD + 12 + i*32}" cy="{TITLEBAR_H/2}" r="10" fill="{dot}"/>')
+parts.append(f'<text x="{W/2}" y="{TITLEBAR_H/2 + 8}" fill="{MUTED}" font-size="24" '
              f'text-anchor="middle">{user}@github: ~$ ./stats.sh</text>')
 
 # ---- stat tiles ----------------------------------------------------------

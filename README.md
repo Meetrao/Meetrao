@@ -28,8 +28,8 @@
 
 <table>
   <tr>
-    <td width="50%" valign="top"><img src="./meet-ascii.svg" width="100%" alt="ASCII portrait of Meet Rao" /></td>
-    <td width="50%" valign="top"><img src="./info-card.svg" width="100%" alt="neofetch-style card: Full-Stack & AI/ML Engineer, stack and current projects" /></td>
+    <td width="50%" valign="top"><img src="./meet-ascii.svg?v=2" width="100%" alt="ASCII portrait of Meet Rao" /></td>
+    <td width="50%" valign="top"><img src="./info-card.svg?v=2" width="100%" alt="neofetch-style card: Full-Stack & AI/ML Engineer, stack and current projects" /></td>
   </tr>
 </table>
 
@@ -108,8 +108,9 @@
 
 <h3><code>meet@github ~ $ git log --graph --since="1 year"</code></h3>
 
-<img src="./contrib-heatmap.svg" width="100%" alt="Meet Rao's GitHub contribution graph, refreshed daily" />
-<img src="./stats.svg" width="100%" alt="Streaks, contribution totals and contributions per month, refreshed daily" />
+<img src="./contrib-heatmap.svg?v=2" width="100%" alt="Meet Rao's GitHub contribution graph, refreshed daily" />
+<br><br>
+<img src="./stats.svg?v=2" width="100%" alt="Streaks, contribution totals and contributions per month, refreshed daily" />
 
 <br><br>
 

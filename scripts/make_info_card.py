@@ -74,7 +74,7 @@ def row(y, delay, inner):
 def render():
     p = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
-        f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">',
+        f'font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">',
         '<style>'
         '.l{opacity:0;animation:in .4s ease-out both}'
         '@keyframes in{0%{opacity:0;transform:translateX(-10px)}100%{opacity:1;transform:translateX(0)}}'
