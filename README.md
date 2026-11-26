@@ -41,7 +41,6 @@
 
 ```diff
 + building   Hooky — keyword comment → instant Instagram DM, a cheaper ManyChat for creators
-+ automating Clippin + Toon Channel — video pipelines that cut, caption & post on their own
 + securing   VibeCheck — plain-English security reports for AI-built (vibe-coded) apps
 ! open to    internships & collaborations
 ```
