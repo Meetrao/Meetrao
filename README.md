@@ -59,9 +59,9 @@
       <br><br><code>Next.js</code> <code>TypeScript</code> <code>Postgres (Neon)</code> <code>Instagram API</code>
     </td>
     <td width="50%" valign="top">
-      <h4>🎬 <a href="https://github.com/Meetrao/clippintool">Clippin</a></h4>
-      Long videos → 9:16 Shorts. Picks the best moments, reframes each scene and burns in word-by-word captions.
-      <br><br><code>Python</code> <code>faster-whisper</code> <code>Ollama</code> <code>ffmpeg</code>
+      <h4>🚀 <a href="https://github.com/Meetrao/startup-validator">StartValidate AI</a></h4>
+      Scores and validates startup ideas with Gemini before you put money into them.
+      <br><br><code>MongoDB</code> <code>Express</code> <code>React</code> <code>Node</code> <code>Gemini</code>
     </td>
   </tr>
   <tr>

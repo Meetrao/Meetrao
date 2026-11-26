@@ -60,7 +60,7 @@ INFO_ROWS = [
     ("AI / ML", "LLM apps, RAG, YOLOv8, sklearn", MAGENTA),
     ("Data", "PostgreSQL, MongoDB, Drizzle", INK),
     ("DevOps", "Docker, AWS, Vercel, Actions", YELLOW),
-    ("Shipping", "Hooky · Clippin · VibeCheck", GREEN),
+    ("Shipping", "Hooky · VibeCheck", GREEN),
     ("Status", "Open to internships & collabs", CYAN),
 ]
 
